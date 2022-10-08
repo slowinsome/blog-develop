@@ -18,7 +18,7 @@ function BlogHeader() {
               marginLeft: "20px",
             }}
           >
-            slowinsome's blog
+            slowinsome&apos;s blog
           </Text>
         </Grid.Col>
         <Grid.Col span="auto"></Grid.Col>
