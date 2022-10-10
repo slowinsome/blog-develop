@@ -1,4 +1,5 @@
 import {
+  ActionIcon,
   Burger,
   Button,
   Container,
@@ -11,6 +12,7 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
+import { HiOutlineSun } from "react-icons/hi";
 
 const menuItems = [
   {
@@ -95,7 +97,11 @@ function BlogHeader() {
           </MediaQuery>
         </Grid.Col>
         <Grid.Col span="auto"></Grid.Col>
-        <Grid.Col span="content">Dark Mode</Grid.Col>
+        <Grid.Col span="content">
+          <ActionIcon size="sm">
+            <HiOutlineSun size="100%" />
+          </ActionIcon>
+        </Grid.Col>
       </Grid>
     </Header>
   );
