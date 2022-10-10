@@ -1,5 +1,6 @@
 import {
   ActionIcon,
+  Box,
   Burger,
   Button,
   Container,
@@ -68,8 +69,19 @@ function BlogHeader() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <Header height="60px">
-      <Grid align="center" sx={{ width: "100%", height: "100%" }}>
+    <Header
+      height={"100%"}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        minHeight: "42px",
+      }}
+    >
+      <Grid
+        align="center"
+        justify="center"
+        sx={{ width: "100%", height: "100%" }}
+      >
         <MediaQuery largerThan="sm" styles={{ display: "none" }}>
           <Grid.Col span="content">
             <BlogBurgerMenu open={open} setOpen={setOpen} />
