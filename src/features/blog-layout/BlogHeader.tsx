@@ -1,10 +1,78 @@
-import { Button, Grid, Group, Header, Text } from "@mantine/core";
+import {
+  Burger,
+  Button,
+  Container,
+  Drawer,
+  Grid,
+  Group,
+  Header,
+  MediaQuery,
+  Text,
+} from "@mantine/core";
 import Link from "next/link";
+import React from "react";
+
+const menuItems = [
+  {
+    name: "About",
+    link: "#",
+  },
+  {
+    name: "Articles",
+    link: "#",
+  },
+];
+
+function BlogBurgerMenu({
+  open,
+  setOpen,
+  className,
+}: {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  className?: string; // Required by MediaQuery
+}) {
+  return (
+    <Container className={className}>
+      <Drawer
+        opened={open}
+        onClose={() => setOpen(false)}
+        title="Register"
+        padding="xl"
+        size="xl"
+      >
+        Hello this is drawer
+      </Drawer>
+      <Burger opened={open} onClick={() => setOpen(!open)} />
+    </Container>
+  );
+}
+
+function BlogNormalMenu(prop: any) {
+  return (
+    <Group spacing="sm" className={prop.className}>
+      {menuItems.map((item) => (
+        <Link key={item.name} href={item.link} passHref>
+          <Button component="a" variant="subtle">
+            {item.name}
+          </Button>
+        </Link>
+      ))}
+    </Group>
+  );
+}
 
 function BlogHeader() {
+  const [open, setOpen] = React.useState(false);
+
   return (
     <Header height="60px">
       <Grid align="center" sx={{ width: "100%", height: "100%" }}>
+        <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+          <Grid.Col span="content">
+            <BlogBurgerMenu open={open} setOpen={setOpen} />
+          </Grid.Col>
+        </MediaQuery>
         <Grid.Col span="content">
           <Text
             component="span"
@@ -21,21 +89,13 @@ function BlogHeader() {
             slowinsome&apos;s blog
           </Text>
         </Grid.Col>
-        <Grid.Col span="auto"></Grid.Col>
         <Grid.Col span="content">
-          <Group spacing="sm">
-            <Link href="#" passHref>
-              <Button component="a" variant="subtle">
-                About
-              </Button>
-            </Link>
-            <Link href="#" passHref>
-              <Button component="a" variant="subtle">
-                Articles
-              </Button>
-            </Link>
-          </Group>
+          <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
+            <BlogNormalMenu />
+          </MediaQuery>
         </Grid.Col>
+        <Grid.Col span="auto"></Grid.Col>
+        <Grid.Col span="content">Dark Mode</Grid.Col>
       </Grid>
     </Header>
   );
