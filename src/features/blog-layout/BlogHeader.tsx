@@ -1,4 +1,6 @@
 import {
+  ActionIcon,
+  Box,
   Burger,
   Button,
   Container,
@@ -11,6 +13,7 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
+import { HiOutlineSun } from "react-icons/hi";
 
 const menuItems = [
   {
@@ -66,8 +69,19 @@ function BlogHeader() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <Header height="60px">
-      <Grid align="center" sx={{ width: "100%", height: "100%" }}>
+    <Header
+      height={"100%"}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        minHeight: "42px",
+      }}
+    >
+      <Grid
+        align="center"
+        justify="center"
+        sx={{ width: "100%", height: "100%" }}
+      >
         <MediaQuery largerThan="sm" styles={{ display: "none" }}>
           <Grid.Col span="content">
             <BlogBurgerMenu open={open} setOpen={setOpen} />
@@ -95,7 +109,11 @@ function BlogHeader() {
           </MediaQuery>
         </Grid.Col>
         <Grid.Col span="auto"></Grid.Col>
-        <Grid.Col span="content">Dark Mode</Grid.Col>
+        <Grid.Col span="content">
+          <ActionIcon size="sm">
+            <HiOutlineSun size="100%" />
+          </ActionIcon>
+        </Grid.Col>
       </Grid>
     </Header>
   );
