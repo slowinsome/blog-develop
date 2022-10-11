@@ -1,15 +1,25 @@
-Initialized Next.js
+**Initialized Next.js**
 ```
 npx create-next-app --typescript blog
 ```
 
-Changed image optimization setting
+**Changed image optimization setting**
 
-Added Github Action
+**Added Github Action**
 
-Install Mantine
+**Install Mantine**
 ```
 yarn add @mantine/core @mantine/hooks @mantine/next @emotion/server @emotion/react
+```
+
+**Replace UI Framework with Chakra-UI**
+- Mantine의 Grid 컴포넌트가 불필요하게 -8 마진을 부여하지만 고쳐지지 않음
+- Chakra-UI가 더 고급스러움
+```
+yarn remove @mantine/core @mantine/hooks @mantine/next
+```
+```
+yarn add @chakra-ui/react @emotion/react @emotion/styled framer-motion
 ```
 
 ### 블로그 레이아웃 디자인
