@@ -8,9 +8,8 @@ import {
   IconButton,
   Spacer,
   Text,
-  useMediaQuery,
+  useColorMode,
 } from "@chakra-ui/react";
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import React from "react";
 import { GrMenu } from "react-icons/gr";
@@ -65,7 +64,7 @@ function BlogNormalMenu(prop: any) {
 
 function BlogHeader() {
   const [open, setOpen] = React.useState(false);
-  const { theme: colorMode, setTheme: setColorMode } = useTheme();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <Flex
@@ -94,7 +93,7 @@ function BlogHeader() {
       <IconButton
         aria-label="Menu"
         icon={<HiOutlineSun />}
-        onClick={() => setColorMode(colorMode === "dark" ? "light" : "dark")}
+        onClick={toggleColorMode}
       ></IconButton>
     </Flex>
   );

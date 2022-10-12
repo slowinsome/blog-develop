@@ -3,8 +3,8 @@ import { extendTheme, ThemeConfig } from "@chakra-ui/react";
 
 // 2. Add your color mode config
 const config: ThemeConfig = {
-  initialColorMode: "light",
-  useSystemColorMode: false,
+  initialColorMode: "dark",
+  useSystemColorMode: true,
 };
 
 // 3. extend the theme
@@ -13,7 +13,7 @@ const theme = extendTheme({
   styles: {
     global: {
       "*": {
-        "-webkit-tap-highlight-color": "transparent",
+        WebkitTapHighlightColor: "transparent",
       },
     },
   },
