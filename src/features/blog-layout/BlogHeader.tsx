@@ -10,6 +10,7 @@ import {
   Text,
   useMediaQuery,
 } from "@chakra-ui/react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import React from "react";
 import { GrMenu } from "react-icons/gr";
@@ -64,7 +65,7 @@ function BlogNormalMenu(prop: any) {
 
 function BlogHeader() {
   const [open, setOpen] = React.useState(false);
-  const [isMobile] = useMediaQuery("(max-width: 500px)");
+  const { theme: colorMode, setTheme: setColorMode } = useTheme();
 
   return (
     <Flex
@@ -93,7 +94,7 @@ function BlogHeader() {
       <IconButton
         aria-label="Menu"
         icon={<HiOutlineSun />}
-        onClick={() => alert("Clicked Btn!")}
+        onClick={() => setColorMode(colorMode === "dark" ? "light" : "dark")}
       ></IconButton>
     </Flex>
   );
