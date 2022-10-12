@@ -22,6 +22,10 @@ yarn remove @mantine/core @mantine/hooks @mantine/next
 yarn add @chakra-ui/react @emotion/react @emotion/styled framer-motion
 ```
 
+## Notes
+- useMediaQuery Hook으로 했을 시, flash 현상이 발생하여 chakra의 breakpoint 이용하는거로 변경
+
+
 ### 블로그 레이아웃 디자인
 - 좌측에 타이틀
 - 우측에 메뉴 및 다크모드
