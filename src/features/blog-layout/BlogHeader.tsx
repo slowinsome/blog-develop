@@ -1,18 +1,18 @@
 import {
-  ActionIcon,
   Box,
-  Burger,
   Button,
-  Container,
   Drawer,
-  Grid,
-  Group,
-  Header,
-  MediaQuery,
+  DrawerContent,
+  DrawerOverlay,
+  Flex,
+  IconButton,
+  Spacer,
   Text,
-} from "@mantine/core";
+  useMediaQuery,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
+import { GrMenu } from "react-icons/gr";
 import { HiOutlineSun } from "react-icons/hi";
 
 const menuItems = [
@@ -29,93 +29,73 @@ const menuItems = [
 function BlogBurgerMenu({
   open,
   setOpen,
-  className,
 }: {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  className?: string; // Required by MediaQuery
 }) {
   return (
-    <Container className={className}>
-      <Drawer
-        opened={open}
-        onClose={() => setOpen(false)}
-        title="Register"
-        padding="xl"
-        size="xl"
-      >
-        Hello this is drawer
+    <Box>
+      <Drawer isOpen={open} onClose={() => setOpen(false)} placement="left">
+        <DrawerOverlay />
+        <DrawerContent>Hello this is drawer</DrawerContent>
       </Drawer>
-      <Burger opened={open} onClick={() => setOpen(!open)} />
-    </Container>
+      <IconButton
+        aria-label="Menu"
+        icon={<GrMenu />}
+        onClick={() => setOpen(!open)}
+      ></IconButton>
+    </Box>
   );
 }
 
 function BlogNormalMenu(prop: any) {
   return (
-    <Group spacing="sm" className={prop.className}>
+    <Flex>
       {menuItems.map((item) => (
         <Link key={item.name} href={item.link} passHref>
-          <Button component="a" variant="subtle">
+          <Button as={"a"} colorScheme="teal" variant="ghost">
             {item.name}
           </Button>
         </Link>
       ))}
-    </Group>
+    </Flex>
   );
 }
 
 function BlogHeader() {
   const [open, setOpen] = React.useState(false);
+  const [isMobile] = useMediaQuery("(max-width: 500px)");
 
   return (
-    <Header
-      height={"100%"}
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        minHeight: "42px",
-      }}
+    <Flex
+      gap={"4px"}
+      align="center"
+      borderBottom="solid"
+      borderBottomWidth="thin"
+      borderBottomColor="gray.200"
+      p="2px"
     >
-      <Grid
-        align="center"
-        justify="center"
-        sx={{ width: "100%", height: "100%" }}
+      <Box display={{ base: "block", sm: "none" }}>
+        <BlogBurgerMenu open={open} setOpen={setOpen} />
+      </Box>
+      <Text
+        bgGradient="linear(to-tr, indigo, cyan)"
+        bgClip="text"
+        fontSize="xl"
+        fontWeight="bold"
       >
-        <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-          <Grid.Col span="content">
-            <BlogBurgerMenu open={open} setOpen={setOpen} />
-          </Grid.Col>
-        </MediaQuery>
-        <Grid.Col span="content">
-          <Text
-            component="span"
-            align="center"
-            variant="gradient"
-            gradient={{ from: "indigo", to: "cyan", deg: 45 }}
-            size="xl"
-            weight={700}
-            style={{
-              fontFamily: "Greycliff CF, sans-serif",
-              marginLeft: "20px",
-            }}
-          >
-            slowinsome&apos;s blog
-          </Text>
-        </Grid.Col>
-        <Grid.Col span="content">
-          <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-            <BlogNormalMenu />
-          </MediaQuery>
-        </Grid.Col>
-        <Grid.Col span="auto"></Grid.Col>
-        <Grid.Col span="content">
-          <ActionIcon size="sm">
-            <HiOutlineSun size="100%" />
-          </ActionIcon>
-        </Grid.Col>
-      </Grid>
-    </Header>
+        slowinsome&apos;s blog
+      </Text>
+      <Box display={{ base: "none", sm: "block" }}>
+        <BlogNormalMenu />
+      </Box>
+      <Spacer />
+      <IconButton
+        aria-label="Menu"
+        icon={<HiOutlineSun />}
+        onClick={() => alert("Clicked Btn!")}
+      ></IconButton>
+    </Flex>
   );
 }
 
