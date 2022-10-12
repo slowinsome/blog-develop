@@ -75,7 +75,9 @@ function BlogHeader() {
       borderBottomColor="gray.200"
       p="2px"
     >
-      {isMobile && <BlogBurgerMenu open={open} setOpen={setOpen} />}
+      <Box display={{ base: "block", sm: "none" }}>
+        <BlogBurgerMenu open={open} setOpen={setOpen} />
+      </Box>
       <Text
         bgGradient="linear(to-tr, indigo, cyan)"
         bgClip="text"
@@ -84,8 +86,9 @@ function BlogHeader() {
       >
         slowinsome&apos;s blog
       </Text>
-
-      {!isMobile && <BlogNormalMenu />}
+      <Box display={{ base: "none", sm: "block" }}>
+        <BlogNormalMenu />
+      </Box>
       <Spacer />
       <IconButton
         aria-label="Menu"
