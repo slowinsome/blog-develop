@@ -8,6 +8,15 @@ const config: ThemeConfig = {
 };
 
 // 3. extend the theme
-const theme = extendTheme({ config });
+const theme = extendTheme({
+  config,
+  styles: {
+    global: {
+      "*": {
+        "-webkit-tap-highlight-color": "transparent",
+      },
+    },
+  },
+});
 
 export default theme;
