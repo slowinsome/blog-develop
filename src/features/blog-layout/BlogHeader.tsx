@@ -14,6 +14,7 @@ import { Sun } from "@styled-icons/heroicons-outline";
 import Link from "next/link";
 import React from "react";
 import { Menu } from "styled-icons/material";
+import { mode } from "@chakra-ui/theme-tools";
 
 const menuItems = [
   {
@@ -72,7 +73,7 @@ function BlogHeader() {
       align="center"
       borderBottom="solid"
       borderBottomWidth="thin"
-      borderBottomColor="gray.200"
+      borderBottomColor={mode("gray.200", "gray.700")({ colorMode })}
       p="2px"
     >
       <Box display={{ base: "block", sm: "none" }}>
