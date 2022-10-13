@@ -1,5 +1,5 @@
-import { ChakraProvider } from "@chakra-ui/react";
 import { AppProps } from "next/app";
+import { ChakraProviderNextThemes } from "../src/ChakraProviderNextThemes";
 import BlogHeader from "../src/features/blog-layout/BlogHeader";
 import theme from "../styles/theme";
 
@@ -8,9 +8,9 @@ export default function App(props: AppProps) {
 
   return (
     /* By using ChakraProvider at the root of your application, we automatically render a GlobalStyle component. */
-    <ChakraProvider theme={theme}>
+    <ChakraProviderNextThemes theme={theme}>
       <BlogHeader />
       <Component {...pageProps} />
-    </ChakraProvider>
+    </ChakraProviderNextThemes>
   );
 }

@@ -24,6 +24,10 @@ yarn add @chakra-ui/react @emotion/react @emotion/styled framer-motion
 
 ## Notes
 - useMediaQuery Hook으로 했을 시, flash 현상이 발생하여 chakra의 breakpoint 이용하는거로 변경
+- next-themes는 default로 root와 background 설정 바꾸는 듯 하다
+
+## Dark Mode
+https://github.com/pacocoursey/next-themes/issues/59
 
 
 ### 블로그 레이아웃 디자인

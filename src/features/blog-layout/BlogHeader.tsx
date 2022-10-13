@@ -8,12 +8,13 @@ import {
   IconButton,
   Spacer,
   Text,
-  useMediaQuery,
+  useColorMode,
 } from "@chakra-ui/react";
+import { Sun } from "@styled-icons/heroicons-outline";
 import Link from "next/link";
 import React from "react";
-import { GrMenu } from "react-icons/gr";
-import { HiOutlineSun } from "react-icons/hi";
+import { Menu } from "styled-icons/material";
+import { mode } from "@chakra-ui/theme-tools";
 
 const menuItems = [
   {
@@ -41,7 +42,7 @@ function BlogBurgerMenu({
       </Drawer>
       <IconButton
         aria-label="Menu"
-        icon={<GrMenu />}
+        icon={<Menu size="1em" />}
         onClick={() => setOpen(!open)}
       ></IconButton>
     </Box>
@@ -64,7 +65,7 @@ function BlogNormalMenu(prop: any) {
 
 function BlogHeader() {
   const [open, setOpen] = React.useState(false);
-  const [isMobile] = useMediaQuery("(max-width: 500px)");
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <Flex
@@ -72,7 +73,7 @@ function BlogHeader() {
       align="center"
       borderBottom="solid"
       borderBottomWidth="thin"
-      borderBottomColor="gray.200"
+      borderBottomColor={mode("gray.200", "gray.700")({ colorMode })}
       p="2px"
     >
       <Box display={{ base: "block", sm: "none" }}>
@@ -92,8 +93,8 @@ function BlogHeader() {
       <Spacer />
       <IconButton
         aria-label="Menu"
-        icon={<HiOutlineSun />}
-        onClick={() => alert("Clicked Btn!")}
+        icon={<Sun size="1em" />}
+        onClick={toggleColorMode}
       ></IconButton>
     </Flex>
   );
