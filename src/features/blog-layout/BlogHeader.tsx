@@ -10,10 +10,10 @@ import {
   Text,
   useColorMode,
 } from "@chakra-ui/react";
+import { Sun } from "@styled-icons/heroicons-outline";
 import Link from "next/link";
 import React from "react";
-import { GrMenu } from "react-icons/gr";
-import { HiOutlineSun } from "react-icons/hi";
+import { Menu } from "styled-icons/material";
 
 const menuItems = [
   {
@@ -41,7 +41,7 @@ function BlogBurgerMenu({
       </Drawer>
       <IconButton
         aria-label="Menu"
-        icon={<GrMenu />}
+        icon={<Menu size="1em" />}
         onClick={() => setOpen(!open)}
       ></IconButton>
     </Box>
@@ -92,7 +92,7 @@ function BlogHeader() {
       <Spacer />
       <IconButton
         aria-label="Menu"
-        icon={<HiOutlineSun />}
+        icon={<Sun size="1em" />}
         onClick={toggleColorMode}
       ></IconButton>
     </Flex>
