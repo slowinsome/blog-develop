@@ -1,21 +1,18 @@
 import {
   Box,
-  Button,
-  Drawer,
-  DrawerContent,
-  DrawerOverlay,
   Flex,
   IconButton,
   Spacer,
   Text,
   useColorMode,
 } from "@chakra-ui/react";
-import { Sun } from "@styled-icons/heroicons-outline";
-import Link from "next/link";
-import React from "react";
-import { Menu } from "styled-icons/material";
 import { mode } from "@chakra-ui/theme-tools";
+import { Sun } from "@styled-icons/heroicons-outline";
+import React from "react";
+import { BlogBurgerMenu } from "./BlogBurgerMenu";
+import { BlogNormalMenu } from "./BlogNormalMenu";
 
+// TODO: Split to file?
 const menuItems = [
   {
     name: "About",
@@ -27,43 +24,7 @@ const menuItems = [
   },
 ];
 
-function BlogBurgerMenu({
-  open,
-  setOpen,
-}: {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
-  return (
-    <Box>
-      <Drawer isOpen={open} onClose={() => setOpen(false)} placement="left">
-        <DrawerOverlay />
-        <DrawerContent>Hello this is drawer</DrawerContent>
-      </Drawer>
-      <IconButton
-        aria-label="Menu"
-        icon={<Menu size="1em" />}
-        onClick={() => setOpen(!open)}
-      ></IconButton>
-    </Box>
-  );
-}
-
-function BlogNormalMenu(prop: any) {
-  return (
-    <Flex>
-      {menuItems.map((item) => (
-        <Link key={item.name} href={item.link} passHref>
-          <Button as={"a"} colorScheme="teal" variant="ghost">
-            {item.name}
-          </Button>
-        </Link>
-      ))}
-    </Flex>
-  );
-}
-
-function BlogHeader() {
+export function BlogHeader() {
   const [open, setOpen] = React.useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -88,7 +49,7 @@ function BlogHeader() {
         slowinsome&apos;s blog
       </Text>
       <Box display={{ base: "none", sm: "block" }}>
-        <BlogNormalMenu />
+        <BlogNormalMenu menuItems={menuItems} />
       </Box>
       <Spacer />
       <IconButton
@@ -99,5 +60,3 @@ function BlogHeader() {
     </Flex>
   );
 }
-
-export default BlogHeader;

@@ -1,6 +1,6 @@
 import { AppProps } from "next/app";
 import { ChakraProviderNextThemes } from "../src/ChakraProviderNextThemes";
-import BlogHeader from "../src/features/blog-layout/BlogHeader";
+import { BlogHeader } from "@features/blog-layout";
 import theme from "../styles/theme";
 
 export default function App(props: AppProps) {
