@@ -24,6 +24,7 @@ export function BlogBurgerMenu({
         aria-label="Menu"
         icon={<Menu size="1em" />}
         onClick={() => setOpen(!open)}
+        variant="ghost"
       ></IconButton>
     </Box>
   );

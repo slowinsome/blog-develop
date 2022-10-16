@@ -6,7 +6,6 @@ import {
   Text,
   useColorMode,
 } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
 import { Sun } from "@styled-icons/heroicons-outline";
 import React from "react";
 import { BlogBurgerMenu } from "./BlogBurgerMenu";
@@ -30,11 +29,13 @@ export function BlogHeader() {
 
   return (
     <Flex
+      mt="2px"
+      mb="8px"
       gap={"4px"}
       align="center"
-      borderBottom="solid"
-      borderBottomWidth="thin"
-      borderBottomColor={mode("gray.200", "gray.700")({ colorMode })}
+      // borderBottom="solid"
+      // borderBottomWidth="thin"
+      // borderBottomColor={mode("gray.200", "gray.700")({ colorMode })}
       p="2px"
     >
       <Box display={{ base: "block", sm: "none" }}>
@@ -48,7 +49,7 @@ export function BlogHeader() {
       >
         slowinsome&apos;s blog
       </Text>
-      <Box display={{ base: "none", sm: "block" }}>
+      <Box display={{ base: "none", sm: "block" }} pl="8px">
         <BlogNormalMenu menuItems={menuItems} />
       </Box>
       <Spacer />
@@ -56,6 +57,7 @@ export function BlogHeader() {
         aria-label="Menu"
         icon={<Sun size="1em" />}
         onClick={toggleColorMode}
+        variant="outline"
       ></IconButton>
     </Flex>
   );
