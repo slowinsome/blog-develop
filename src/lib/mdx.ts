@@ -12,7 +12,10 @@ import remarkGfm from "remark-gfm";
 export async function createMdxOutput(source: string): Promise<MdxOutput> {
   const mdxSource = await serialize(source, {
     mdxOptions: {
-      remarkPlugins: [remarkGfm],
+      remarkPlugins: [
+        // Github flavored markdown
+        remarkGfm,
+      ],
       rehypePlugins: [
         rehypeSlug,
         rehypeCodeTitles,
