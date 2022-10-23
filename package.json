@@ -31,6 +31,7 @@
     "styled-icons": "^10.46.0"
   },
   "devDependencies": {
+    "@chakra-ui/cli": "^2.1.8",
     "@types/node": "18.8.3",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
