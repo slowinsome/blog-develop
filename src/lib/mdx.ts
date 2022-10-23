@@ -16,7 +16,12 @@ export async function createMdxOutput(source: string): Promise<MdxOutput> {
       rehypePlugins: [
         rehypeSlug,
         rehypeCodeTitles,
-        rehypePrism,
+        [
+          rehypePrism,
+          {
+            showLineNumbers: true,
+          },
+        ],
         [
           rehypeAutolinkHeadings,
           {
