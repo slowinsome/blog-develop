@@ -9,6 +9,7 @@ import {
 import { Sun } from "@styled-icons/heroicons-outline";
 import React from "react";
 import { BlogBurgerMenu } from "./BlogBurgerMenu";
+import { BlogMenuHome } from "./BlogMenuHome";
 import { BlogNormalMenu } from "./BlogNormalMenu";
 
 // TODO: Split to file?
@@ -41,14 +42,7 @@ export function BlogHeader() {
       <Box display={{ base: "block", sm: "none" }}>
         <BlogBurgerMenu open={open} setOpen={setOpen} />
       </Box>
-      <Text
-        bgGradient="linear(to-tr, indigo, cyan)"
-        bgClip="text"
-        fontSize="xl"
-        fontWeight="bold"
-      >
-        slowinsome&apos;s blog
-      </Text>
+      <BlogMenuHome />
       <Box display={{ base: "none", sm: "block" }} pl="8px">
         <BlogNormalMenu menuItems={menuItems} />
       </Box>
