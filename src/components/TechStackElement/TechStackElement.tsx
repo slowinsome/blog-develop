@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Image, useColorMode } from "@chakra-ui/react";
+import { Box, Center, Flex, Image, Text, useColorMode } from "@chakra-ui/react";
 
 export function TechStackElement({ title, src }: any) {
   const { colorMode } = useColorMode();
@@ -17,7 +17,9 @@ export function TechStackElement({ title, src }: any) {
         <Center w="160px" h="120px" p="12px">
           <Image src={src} alt={title} width="auto" height="100%" />
         </Center>
-        <Center mb="4px">{title}</Center>
+        <Center mb="4px">
+          <Text fontWeight="semibold">{title}</Text>
+        </Center>
       </Box>
     </Flex>
   );
