@@ -1,11 +1,10 @@
 import {
   Box,
+  Flex,
   Heading,
   Text,
   useColorMode,
   VStack,
-  Wrap,
-  WrapItem,
 } from "@chakra-ui/react";
 import { TechStackElement } from "@components/TechStackElement/TechStackElement";
 import type { NextPage } from "next";
@@ -25,24 +24,18 @@ const Home: NextPage = () => {
         Tech Stack
       </Heading>
       <Box height="12px" />
-      <Wrap justify="center" display={"flex"} boxSize="auto">
-        <WrapItem>
-          <TechStackElement title="Spring Boot" src="logo-springboot.svg" />
-        </WrapItem>
-        <WrapItem>
-          <TechStackElement
-            title="MongoDB"
-            src={
-              colorMode == "light"
-                ? "logo-mongodb_leaf-light.png"
-                : "logo-mongodb_leaf-dark.png"
-            }
-          />
-        </WrapItem>
-        <WrapItem>
-          <TechStackElement title="React" src="logo-react.svg" />
-        </WrapItem>
-      </Wrap>
+      <Flex justify="center" flexWrap="wrap" gap="3">
+        <TechStackElement title="Spring Boot" src="logo-springboot.svg" />
+        <TechStackElement
+          title="MongoDB"
+          src={
+            colorMode == "light"
+              ? "logo-mongodb_leaf-light.png"
+              : "logo-mongodb_leaf-dark.png"
+          }
+        />
+        <TechStackElement title="React" src="logo-react.svg" />
+      </Flex>
     </VStack>
   );
 };

@@ -9,6 +9,11 @@ export function TechStackElement({ title, src }: any) {
       bgGradient="linear(to-tr, indigo, cyan)"
       clipPath="polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)"
       p="4px"
+      transition="all 0.2s ease-in-out"
+      _hover={{
+        transform: "scale(1.1)",
+        zIndex: 1,
+      }}
     >
       <Box
         backgroundColor={colorMode == "light" ? "blue.50" : "gray.900"}
