@@ -4,9 +4,6 @@ import styled from "@emotion/styled";
 export const BaseCodeBox = styled(Box)`
   div[data-rehype-pretty-code-fragment] {
     overflow: hidden;
-
-    /* stylist preferences */
-    background-color: rgb(255 255 255 / 0.1);
     border-radius: 0.5rem;
   }
 
