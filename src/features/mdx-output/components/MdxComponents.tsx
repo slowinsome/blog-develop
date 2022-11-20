@@ -18,5 +18,5 @@ export const MdxComponents = {
   ul: (props: any) => <UnorderedList {...props} />, // TODO: Nested lists
   li: (props: any) => <ListItem {...props} />,
   pre: (props: any) => setMdxCodeBlockComponent(props),
-  code: (props: any) => setMdxInlineCodeBlockComponent(props),
+  // code: (props: any) => setMdxInlineCodeBlockComponent(props),
 };
