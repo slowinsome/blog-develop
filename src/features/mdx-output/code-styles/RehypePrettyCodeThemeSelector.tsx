@@ -6,15 +6,20 @@ const CODE_THEMES = {
   "github-light": GithubLightCodeBox,
 };
 
-let selectedLightTheme: keyof typeof CODE_THEMES = "github-light"; // Default Light Theme
-let selectedDarkTheme: keyof typeof CODE_THEMES = "one-dark-pro"; // Default Dark Theme
+let selectedCodeTheme: {
+  light: keyof typeof CODE_THEMES;
+  dark: keyof typeof CODE_THEMES;
+} = {
+  light: "github-light", // default light theme
+  dark: "one-dark-pro", // default dark theme
+};
 
 export function selectRehypePrettyCodeTheme(
   lightTheme: keyof typeof CODE_THEMES,
   darkTheme: keyof typeof CODE_THEMES
 ) {
-  selectedLightTheme = lightTheme;
-  selectedDarkTheme = darkTheme;
+  selectedCodeTheme.light = lightTheme;
+  selectedCodeTheme.dark = darkTheme;
 
   return {
     light: lightTheme,
@@ -24,7 +29,7 @@ export function selectRehypePrettyCodeTheme(
 
 export function getRehypePrettyCodeThemeComponents() {
   return {
-    light: CODE_THEMES[selectedLightTheme],
-    dark: CODE_THEMES[selectedDarkTheme],
+    light: CODE_THEMES[selectedCodeTheme.light],
+    dark: CODE_THEMES[selectedCodeTheme.dark],
   };
 }
