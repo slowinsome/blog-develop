@@ -11,4 +11,10 @@ export const GithubLightCodeBox = styled(LightThemeCodeBox)`
     background-color: rgba(27 31 35 / 0.1);
     color: black;
   }
+
+  code:not([data-language]),
+  span[data-rehype-pretty-code-fragment] {
+    background-color: rgba(255 255 255 / 1);
+    border: 1px solid rgba(27 31 35 / 0.2);
+  }
 `;

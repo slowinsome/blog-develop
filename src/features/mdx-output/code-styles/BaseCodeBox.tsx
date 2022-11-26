@@ -73,4 +73,11 @@ export const BaseCodeBox = styled(Box)`
     width: 1rem;
     color: rgb(255 255 255 / 0.2);
   }
+
+  // Inline Code Block
+  code:not([data-language]),
+  span[data-rehype-pretty-code-fragment] {
+    overflow: hidden;
+    border-radius: 0.2rem;
+  }
 `;
