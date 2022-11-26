@@ -1,4 +1,4 @@
-import { Box, IconButton, LightMode } from "@chakra-ui/react";
+import { Box, IconButton, useColorMode } from "@chakra-ui/react";
 import { Check2 } from "@styled-icons/bootstrap/Check2";
 import { ContentCopy } from "@styled-icons/material/ContentCopy";
 import React, { ReactElement, useRef } from "react";
@@ -7,14 +7,7 @@ import React, { ReactElement, useRef } from "react";
 // https://joyofcode.xyz/create-a-markdown-blog#markdown-plugins
 
 function isCodeBlock(props: any): boolean {
-  return (
-    props?.children &&
-    React.Children.toArray(props.children).find(
-      (child) =>
-        React.isValidElement(child) &&
-        child?.props?.className.includes("code-highlight")
-    ) != undefined
-  );
+  return props?.["data-language"] !== undefined;
 }
 
 export function setMdxCodeBlockComponent(props: any) {
@@ -24,11 +17,14 @@ export function setMdxCodeBlockComponent(props: any) {
 
 type CodeBlockProps = {
   children: React.ReactNode;
+  "data-theme": "light" | "dark";
 };
 
 export default function CodeBlockWithCopyButton(
   props: React.PropsWithChildren<CodeBlockProps>
 ): ReactElement {
+  const { colorMode } = useColorMode();
+
   const [copiedTimer, setCopiedTimer] = React.useState<NodeJS.Timeout | null>(
     null
   );
@@ -42,7 +38,11 @@ export default function CodeBlockWithCopyButton(
   }
 
   return (
-    <Box sx={{ position: "relative" }} width="100%">
+    <Box
+      sx={{ position: "relative" }}
+      width="100%"
+      data-theme={props["data-theme"]}
+    >
       <pre ref={preRef} {...props}>
         {props.children}
       </pre>
@@ -50,9 +50,12 @@ export default function CodeBlockWithCopyButton(
         aria-label="copy"
         icon={
           copiedTimer ? (
-            <Check2 size="1.2rem" color="lightgreen" />
+            <Check2
+              size="1.2em"
+              color={colorMode == "light" ? "green" : "lightgreen"}
+            />
           ) : (
-            <ContentCopy size="1rem" />
+            <ContentCopy size="1em" />
           )
         }
         onClick={copy}
@@ -60,9 +63,11 @@ export default function CodeBlockWithCopyButton(
         sx={{
           position: "absolute",
           cursor: "pointer",
-          top: "10px",
-          right: "10px",
+          top: "0.4em",
+          right: "0.4em",
         }}
+        size="md"
+        data-theme={props["data-theme"]}
       />
     </Box>
   );
